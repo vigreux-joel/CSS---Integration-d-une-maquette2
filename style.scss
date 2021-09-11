@@ -65,7 +65,7 @@
     position: sticky;
     top: 0;
     display: block;
-    z-index: 1;
+    z-index: 3;
     background-color: white;
     padding: 10px;
     nav{
@@ -87,7 +87,6 @@
         li{
           width: 15%;
           text-align: center;
-          min-width: 75px;
         }
         a{
           display: block;
@@ -124,6 +123,9 @@
           color: #96BB7C;
           margin: 0 auto;
           margin-right: 0;
+          &:hover{
+            color: #85A66E;
+          }
         }
         button{
           min-width: 90px;
@@ -138,8 +140,7 @@
           cursor: pointer;
 
           &:hover{
-            filter: brightness(85%);
-            color: #FFFFFF;
+            background-color: #85A66E;
           }
         }
       }
@@ -160,11 +161,12 @@ main{
 
       .col:nth-child(1){
         flex: 1;
+        z-index: 2;
+        padding-bottom: 150px;
 
         div {
           margin-left: auto;
           max-width: $max-widht/2;
-          width: 100%;
           display: flex;
           flex-wrap: wrap;
 
@@ -220,18 +222,36 @@ main{
         }
       }
       .col:nth-child(2){
-        background: white;
         flex: 0.95;
-        img {
-          max-width: $max-widht/1.9;
+        position: relative;     
+        &:after{
+          content: "";
+          position: absolute;
+          bottom: 30%;
+          left: 0;
+          background-color: #F7FAFF;
           width: 100%;
+          height: 70%;
+          border-radius: 10px;
+          z-index: 1;
+          border-bottom-left-radius: 100px;
+          border-top-right-radius: 100px;
+        }
+        img {
+          position: relative;
+          max-width: $max-widht/1.9;
+          width: 100%;   
+          z-index: 2;
+          display: block;
+          margin: 0 auto;
         }
       }
     }
     .row:nth-of-type(2){
 /*-----Row2-----*/
+      z-index: 2;
       position: absolute;
-      top: 561px;
+      bottom: -235px;
       left: 0;
       right: 0;
       margin-left: auto;
@@ -312,11 +332,11 @@ main{
   }
   .container:nth-of-type(3){
 /*----------Container3----------*/
-    width: 100%;
+    width: 95%;
     max-width: $max-widht;
     display: flex;
     align-items: center;
-    margin: 100px auto;
+    margin: 0 auto;
       .col:nth-child(1){
         width: 100%;
         flex: 1;
@@ -356,7 +376,7 @@ main{
 
   .container:nth-of-type(4){
 /*----------Container4----------*/
-    width: 100%;
+    width: 95%;
     max-width: $max-widht;
     margin: 100px auto;
     .row:nth-of-type(1){
@@ -439,6 +459,7 @@ main{
           margin: 10px 0;
           color: #96BB7C;
           text-decoration: none;
+          white-space: nowrap;
         }
         a:nth-of-type(1){
           width: 70%;
@@ -462,6 +483,7 @@ main{
           font-size: 1rem;
           line-height: 1.5rem;
           color: #252B42;
+          white-space: nowrap;
         }
         p:nth-of-type(1){
           margin-top: 10px;
@@ -512,6 +534,10 @@ main{
           border-radius: 30px;
           width: auto;
           padding: 10px 15px;
+          &:hover{
+            font-size: 1rem;
+          }
+
         }
       }
     }
@@ -519,7 +545,7 @@ main{
   }
   .container:nth-of-type(5){
 /*----------Container5----------*/
-    width: 100%;
+    width: 95%;
     max-width: $max-widht;
     margin: 100px auto;
 /*-----Row1-----*/
@@ -590,13 +616,11 @@ main{
   }
   .container:nth-of-type(6){
 /*----------Container6----------*/
-    width: 100%;
-    margin: 0 auto;
     background: #FFF2F3;
 
     .row:nth-of-type(1){
       max-width: $max-widht;
-      width: 100%;
+      width: 95%;
       padding-top: 112px;
       margin-left: auto;
       margin-right: auto;
@@ -620,7 +644,7 @@ main{
     }
     .row:nth-of-type(2){
       max-width: $max-widht;
-      width: 100%;
+      width: 95%;
       padding-top: 80px;
       padding-bottom: 112px;
       margin-left: auto;
@@ -628,6 +652,7 @@ main{
       form{
         display: flex;
         width: 60%;
+        min-width: 250px;
         margin: 0 auto;
         background: #F9F9F9;
         border: 1px solid #E6E6E6;
@@ -649,6 +674,10 @@ main{
         border-radius: 0px 5px 5px 0px;
         color: white;
         padding: 0 2%;
+        cursor: pointer;
+          &:hover{
+            background-color: #85A66E;
+          }
       }
 
     }
@@ -657,13 +686,14 @@ main{
 /*-------------------------FOOTER-------------------------*/
 footer{
   width: 100%;
-  margin: 0px auto;
   margin-top: 50px;
-  max-width: $max-widht*1.2;
   .row:nth-of-type(1){
+    max-width: $max-widht*1.2;
+    margin: 0 auto;
     width: 100%;
     display: flex;
-    margin: 30px 0;
+    background-color: white;
+    padding: 30px 0;
     .col{
       margin: 0 2%;
       width: 33%;
@@ -704,7 +734,13 @@ footer{
     }
   }
   .row:nth-of-type(2){
-    margin: 30px 0;
+    .col{
+      max-width: $max-widht*1.2;
+      margin: 0 auto;
+    }
+    width: 100%;
+    background-color: #FAFAFA;
+    padding: 30px 0;
     p{
       padding-left: 2%;
       line-height: 1.5rem;
@@ -732,21 +768,10 @@ footer{
         li{
           width: 100%;
         }
-        a{
-          &:hover:after{
-          }
-        }
       }
       .utilisateur{
-        > * {
-        }
-        a{
-        }
         button{
           max-width: 120px;
-          &:hover{
-
-          }
         }
       }
     }
@@ -763,16 +788,7 @@ footer{
               min-width: 490px;
               margin-bottom: 50px;
               margin: 0 auto;
-              p:nth-child(1){
-              }
-              h1{
-              }
-              p:nth-of-type(2){
-              }
-              a:nth-of-type(1){
-              }
-              a:nth-of-type(2){
-              }
+              padding: 0px 5%;
             }
           }
           .col:nth-child(2){
@@ -782,54 +798,220 @@ footer{
             }
           }
         }
+      }
+      .container:nth-of-type(4){
+        /*----------Container4----------*/
         .row:nth-of-type(2){
-    /*-----Row2-----*/
+        /*-----Row2-----*/
+          flex-wrap: wrap;
           .col{
-            > *{
-            }
-            img{
-            }
-            h3{
-            }
-            hr{
-            }
-            p{
-            }
+            margin: 0 auto;
+            flex: none;
+            width: 40%;
+            margin-bottom: 20px;
+
           }
         }
+           
       }
     }
+
   
 }
 
 /*-------------------------MQ-(min720px)-------------------------*/
 
 @media screen and(max-width: 720px){
+/*-------------------------GLOBAL-------------------------*/
+
+h2{
+  font-size: 1.65rem !important;
+}
+
+
+
+/*-------------------------HEADER-------------------------*/
+
   header{
     nav{
     .links{
-      flex: auto;
-      width: 100%;
+      flex: none;
+      width: 90%;
+      flex: none;
+      margin: 0 auto;
       margin-bottom: 20px;
+      flex-wrap: wrap;
       li{
-        width: 100%;
+        width: auto;
+        padding: 0 3px;
+        margin: 0 auto;
       }
     }
     .utilisateur{
-      width: 78%;
+      width: 80%;
+      margin: 0 auto;
       flex: none;
       > * {
          margin: 0 auto;
       }
       a{
         margin-right: 10%;
-        flex: auto;
+        flex: none;
       }
     }
   }
     
   }
 
-  
+  main{
+    .container:nth-of-type(1){
+      margin-bottom: 0;
+  /*----------Container1----------*/
+      .row:nth-of-type(1){
+  /*-----Row1-----*/
+        flex-wrap: wrap;
+        .col:nth-child(1){
+          flex: auto;
+          padding-top: 70px;
+          div {
+            min-width: auto;
+            margin-bottom: 50px;
+            margin: 0 auto;
+            p:nth-child(1){
+              font-size: 1.1rem;
+            }
+            h1{
+              font-size: 1.65rem;
+              line-height: 2rem;
+              margin: 1.1rem 0px;
+            }
+            p:nth-of-type(2){
+              margin: 1.1rem 0px;
+            }
+            a:nth-of-type(1){
+              margin: 10px auto;
+            }
+            a:nth-of-type(2){
+              margin: 10px auto;
+            }
+          }
+        }
+        .col:nth-child(2){
+          flex: none;
+          width: 100%;
+          img {
+            min-width: auto;
+          }
+        }
+      }
+      .row:nth-of-type(2){
+  /*-----Row2-----*/
+
+        flex-wrap: wrap;
+        position: static;
+        .col{
+          width: 55%;
+          margin: 20px auto;
+          padding: 5% 12.5%;
+        }
+      }
+    }
+
+    .container:nth-of-type(2){
+      flex-wrap: wrap;
+      
+      .col:nth-child(1){
+        flex: none;
+      }
+      .col:nth-child(2){
+        flex: none;
+        padding: 10%;
+        width: 80%;
+      }
+    }
+    .container:nth-of-type(3){
+      flex-wrap: wrap;
+      
+      .col:nth-child(1){
+        flex: none;
+        padding: 10%;
+        width: 80%;
+      }
+      .col:nth-child(2){
+        flex: none;
+      }
+    }
+
+    .container:nth-of-type(4){
+      /*----------Container4----------*/
+          .row:nth-of-type(1){
+      /*-----Row1-----*/
+            p{
+              text-align: left
+            }
+          }
+          .row:nth-of-type(2){
+      /*-----Row2-----*/
+            flex-wrap: wrap;
+            .col{
+              margin: 0 auto;
+              flex: none;
+              width: 90%;
+              max-width: 400px;
+              margin-bottom: 40px;
+            }
+            .col div:nth-of-type(2) h3 {
+              white-space: initial;
+            }
+            .col div:nth-of-type(2) a {
+              white-space: initial;
+            }
+          }
+    }
+    .container:nth-of-type(5){
+      /*----------Container5----------*/
+
+
+          .row:nth-of-type(2){
+                  /*-----Row2-----*/
+            flex-wrap: wrap;
+            .col{
+              width: 100%;
+              flex: none;
+            }
+      
+          }
+        }
+  }
+  footer{
+    .row:nth-of-type(1){
+      flex-wrap: wrap;
+      .col{
+        margin: 0 auto;
+        width: 35%;
+        &:last-of-type{
+          width: 90%;
+        }
+      }
+    }
+    .row:nth-of-type(2){
+      .col{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      p{
+        order: 1;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      img{
+        order: 2;
+      }
+    }
+  }
+
+    
+      
   
 }
